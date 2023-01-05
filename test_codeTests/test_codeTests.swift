@@ -13,30 +13,42 @@ final class test_codeTests: XCTestCase {
     var viewController: ViewController!
 
     override func setUp() {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
         super.setUp()
+        
+        // ここにセットアップコードを入れます。 このメソッドは、クラス内の各テスト メソッドが呼び出される前に呼び出されます。
+        
+        // Storyboardからクラスを持ってくるためにViewControllerを持ってきている。
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         self.viewController = storyboard.instantiateInitialViewController() as? ViewController
     }
 
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+        // ここに分解コードを入れます。 このメソッドは、クラス内の各テスト メソッドの呼び出し後に呼び出されます。
         super.tearDown()
     }
 
+    //testから始めるメソッドを作ると自動的にテストコードだと判定される
     func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+        // これは、機能テスト ケースの例です。
+        // XCTAssert および関連する関数を使用して、テストが正しい結果を生成することを確認します。
         viewController.loadViewIfNeeded()
         let subClass = viewController.subClass
         let result = subClass?.multiply(num1: 7, num2: 28)
+        
+        //最後のここの部分で失敗したかどうかを返してあげる。
+        //右の値と同じかどうかを判断する。
         XCTAssertEqual(result, 196)
     }
 
     func testPerformanceExample() {
-        // This is an example of a performance test case.
+        // これは、パフォーマンス テスト ケースの例です。
         self.measure {
-            // Put the code you want to measure the time of here.
+            // ここに時間を計測したいコードを入れます。
         }
+    }
+    
+    // test〜〜とつけると自動的にテストコードと判断される。
+    func testHogehoge(){
+        
     }
 }
